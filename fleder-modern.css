@@ -1,12 +1,12 @@
 :root{
-  --nav:#ffffff;
-  --nav2:#ffffff;
+  --nav:#e9edf2;
+  --nav2:#e9edf2;
   --blue:#2563eb;
-  --bg:#f3f6fa;
+  --bg:#f5f7fa;
   --card:#ffffff;
   --text:#152238;
   --muted:#6b778c;
-  --line:#e7ecf2;
+  --line:#e2e7ed;
   --green:#159b65;
   --yellow:#d89a05;
   --red:#d94b4b;
@@ -16,11 +16,11 @@
 body{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;padding:14px}
 .app{grid-template-columns:250px minmax(0,1fr);gap:16px;min-height:calc(100vh - 28px)}
 .side{
-  background:#fff;
+  background:#e9edf2;
   color:#172033;
-  border:1px solid #e3e9f0;
+  border:1px solid #dce2e9;
   border-radius:22px;
-  box-shadow:0 12px 35px rgba(15,23,42,.09);
+  box-shadow:0 12px 35px rgba(15,23,42,.11);
   padding:20px 14px;
   top:14px;
   height:calc(100vh - 28px);
@@ -28,10 +28,10 @@ body{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-app
 }
 .brand{padding:8px 10px 16px!important}
 .brand img{width:170px!important;max-height:54px;object-fit:contain;object-position:left center}
-.schoolMini{color:#657287;padding:0 12px 20px;font-size:12px;font-weight:600}
+.schoolMini{color:#596579;padding:0 12px 20px;font-size:12px;font-weight:650}
 .nav{display:grid;gap:6px}
 .nav button{
-  color:#344054;
+  color:#27364b;
   background:transparent;
   border:1px solid transparent;
   border-radius:12px;
@@ -40,17 +40,10 @@ body{background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-app
   font-size:14px;
   transition:.16s ease;
 }
-.nav button:hover{background:#f1f5fb;color:#174ea6;border-color:#e6edf7}
-.nav button.active{background:#eaf2ff;color:#175cd3;border-color:#d7e6ff;box-shadow:0 4px 12px rgba(37,99,235,.08)}
+.nav button:hover{background:#f7f9fc;color:#174ea6;border-color:#dce4ee}
+.nav button.active{background:#ffffff;color:#175cd3;border-color:#d7e1ed;box-shadow:0 5px 15px rgba(15,23,42,.08)}
 .main{padding:12px 22px 40px;min-width:0}
-.top{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:15px 18px;
-  margin-bottom:22px;
-  box-shadow:0 5px 18px rgba(15,23,42,.045)
-}
+.top{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px 18px;margin-bottom:22px;box-shadow:0 5px 18px rgba(15,23,42,.045)}
 .top h1{font-size:26px;letter-spacing:-.02em}
 .pill{border:1px solid var(--line);background:#fff;color:#4f5d70;border-radius:11px;padding:8px 11px}
 .grid4{gap:14px}
