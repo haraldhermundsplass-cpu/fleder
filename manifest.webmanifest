@@ -1,0 +1,19 @@
+{
+  "name": "Fleder",
+  "short_name": "Fleder",
+  "description": "Kvalitets- og oppfølgingsverktøy for faglig leder i trafikkskole",
+  "lang": "no",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#e9edf2",
+  "icons": [
+    {
+      "src": "/fleder-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
