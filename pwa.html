@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Fleder</title>
+  <meta name="theme-color" content="#e9edf2">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Fleder">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/fleder-logo.png">
+</head>
+<body>
+<script>
+(async()=>{
+  try{
+    const response=await fetch('/index.html',{cache:'no-store'});
+    if(!response.ok) throw new Error('Kunne ikke laste Fleder');
+    let html=await response.text();
+
+    const pwaHead=`
+<meta name="theme-color" content="#e9edf2">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Fleder">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/fleder-logo.png">`;
+
+    html=html.replace('<head>','<head>'+pwaHead);
+    html=html.replace('<title>Faglig leder – trafikkskole</title>','<title>Fleder</title>');
+    html=html.replace('</body>',`<script>
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
+<\/script></body>`);
+
+    document.open();
+    document.write(html);
+    document.close();
+  }catch(err){
+    document.body.innerHTML='<main style="font-family:system-ui;padding:32px;max-width:640px;margin:auto"><h1>Fleder</h1><p>Appen kunne ikke lastes akkurat nå. Kontroller internettilkoblingen og prøv igjen.</p></main>';
+  }
+})();
+</script>
+</body>
+</html>
