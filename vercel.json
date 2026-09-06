@@ -5,6 +5,14 @@
     {
       "source": "/",
       "destination": "/pwa.html"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/pwa.html"
+    },
+    {
+      "source": "/app-source",
+      "destination": "/index.html"
     }
   ],
   "headers": [
@@ -19,6 +27,12 @@
       "headers": [
         {"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"},
         {"key": "Service-Worker-Allowed", "value": "/"}
+      ]
+    },
+    {
+      "source": "/pwa.html",
+      "headers": [
+        {"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"}
       ]
     }
   ]
