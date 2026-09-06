@@ -59,5 +59,9 @@ body{background:#f5f7fa!important;color:var(--text);font-family:Inter,ui-sans-se
 .authCard::before{content:"";display:block;width:230px;height:82px;margin:0 auto 18px;background:url('/fleder-logo.png') center/contain no-repeat}
 .authCard>h1{display:none!important}
 .authCard>p.muted{text-align:center!important;margin:0 0 20px!important;color:#657287!important}
+/* Disse er kurs innenfor klasser, ikke egne klasser. Skjul dem i både skole- og lærerinnstillinger. */
+label.check:has(input[value="MC grunnkurs"]),
+label.check:has(input[value="Sikkerhetskurs bane"]),
+label.check:has(input[value="Sikkerhetskurs vei"]){display:none!important}
 @media (max-width:980px){.app{grid-template-columns:215px minmax(0,1fr)!important}.main{padding:12px 12px 30px!important}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.teacherCards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){body{padding:0!important}.app{display:block!important;min-height:100vh!important}.side{position:relative!important;height:auto!important;border-radius:0!important;border:0!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important}.nav{grid-template-columns:repeat(2,minmax(0,1fr))!important}.main{padding:16px!important}.top{align-items:flex-start}.grid4,.split,.settingsCols,.formgrid,.teacherCards{grid-template-columns:1fr}.authCard::before{width:200px;height:72px}}
