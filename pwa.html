@@ -16,7 +16,7 @@
 <script>
 (async()=>{
   try{
-    const response=await fetch('/index.html?v=classes2',{cache:'no-store'});
+    const response=await fetch('/app-source?v=classes3',{cache:'no-store'});
     if(!response.ok) throw new Error('Kunne ikke laste Fleder');
     let html=await response.text();
 
@@ -32,14 +32,25 @@
     html=html.replace('<head>','<head>'+pwaHead);
     html=html.replace('<title>Faglig leder – trafikkskole</title>','<title>Fleder</title>');
 
-    // Kurs som hører inn under klassene skal ikke opptre som egne klasser.
-    // Fjerner dem fra ALL_CLASSES, som brukes både i skole- og lærerinnstillinger.
+    // Disse tre er kurs innenfor klassene, ikke egne klasser.
+    // Fjernes fra ALL_CLASSES som brukes i både skole- og lærerinnstillinger.
     html=html.replace(/,'MC grunnkurs'/g,'');
     html=html.replace(/,'Sikkerhetskurs bane'/g,'');
     html=html.replace(/,'Sikkerhetskurs vei'/g,'');
 
+    // Rydd også bort kursene fra allerede lagrede lærer-/skolevalg når data lastes inn,
+    // slik at de ikke dukker opp som gamle klasse-tag'er eller i årsplandekning.
+    html=html.replace(
+      "function mapTeacher(t){return {id:t.id,name:t.name||'',email:t.email||'',classes:t.classes||[],approvals:t.approvals||[],userId:t.user_id||null}}",
+      "function mapTeacher(t){const hidden=new Set(['MC grunnkurs','Sikkerhetskurs bane','Sikkerhetskurs vei']);return {id:t.id,name:t.name||'',email:t.email||'',classes:(t.classes||[]).filter(c=>!hidden.has(c)),approvals:t.approvals||[],userId:t.user_id||null}}"
+    );
+    html=html.replace(
+      "function mapSchool(s){return {id:'main',schoolName:s?.name||'',orgNumber:s?.org_number||'',leader:s?.leader_name||'',email:s?.email||'',phone:s?.phone||'',year:s?.plan_year||new Date().getFullYear(),classes:s?.classes||[]}}",
+      "function mapSchool(s){const hidden=new Set(['MC grunnkurs','Sikkerhetskurs bane','Sikkerhetskurs vei']);return {id:'main',schoolName:s?.name||'',orgNumber:s?.org_number||'',leader:s?.leader_name||'',email:s?.email||'',phone:s?.phone||'',year:s?.plan_year||new Date().getFullYear(),classes:(s?.classes||[]).filter(c=>!hidden.has(c))}}"
+    );
+
     html=html.replace('</body>',`<script>
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js?v=2').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js?v=3').catch(()=>{}));}
 <\/script></body>`);
 
     document.open();
