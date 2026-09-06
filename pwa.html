@@ -31,6 +31,11 @@
 
     html=html.replace('<head>','<head>'+pwaHead);
     html=html.replace('<title>Faglig leder – trafikkskole</title>','<title>Fleder</title>');
+
+    // Disse er kurs/undervisningselementer innenfor klassene, ikke egne klasser.
+    // Filtreres ut av Fleder sin klasseliste uten å endre historiske data.
+    html=html.replace(",\'MC grunnkurs\',\'Sikkerhetskurs bane\',\'Sikkerhetskurs vei\'",'');
+
     html=html.replace('</body>',`<script>
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
 <\/script></body>`);
