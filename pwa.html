@@ -16,7 +16,7 @@
 <script>
 (async()=>{
   try{
-    const response=await fetch('/index.html',{cache:'no-store'});
+    const response=await fetch('/index.html?v=classes2',{cache:'no-store'});
     if(!response.ok) throw new Error('Kunne ikke laste Fleder');
     let html=await response.text();
 
@@ -32,12 +32,14 @@
     html=html.replace('<head>','<head>'+pwaHead);
     html=html.replace('<title>Faglig leder – trafikkskole</title>','<title>Fleder</title>');
 
-    // Disse er kurs/undervisningselementer innenfor klassene, ikke egne klasser.
-    // Filtreres ut av Fleder sin klasseliste uten å endre historiske data.
-    html=html.replace(",\'MC grunnkurs\',\'Sikkerhetskurs bane\',\'Sikkerhetskurs vei\'",'');
+    // Kurs som hører inn under klassene skal ikke opptre som egne klasser.
+    // Fjerner dem fra ALL_CLASSES, som brukes både i skole- og lærerinnstillinger.
+    html=html.replace(/,'MC grunnkurs'/g,'');
+    html=html.replace(/,'Sikkerhetskurs bane'/g,'');
+    html=html.replace(/,'Sikkerhetskurs vei'/g,'');
 
     html=html.replace('</body>',`<script>
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js?v=2').catch(()=>{}));}
 <\/script></body>`);
 
     document.open();
