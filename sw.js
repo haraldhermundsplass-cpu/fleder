@@ -1,5 +1,5 @@
-const CACHE_NAME='fleder-pwa-v4';
-const APP_SHELL=['/','/index.html','/pwa.html','/fleder-modern.css','/fleder-logo.png','/manifest.webmanifest'];
+const CACHE_NAME='fleder-pwa-v5';
+const APP_SHELL=['/','/index.html','/pwa.html','/fleder-modern.css','/fleder-logo.png','/fleder-icon-180.png','/fleder-icon-192.png','/fleder-icon-512.png','/manifest.webmanifest'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)).catch(()=>{}));
@@ -22,7 +22,8 @@ self.addEventListener('fetch',event=>{
     url.pathname==='/fleder-modern.css' ||
     url.pathname==='/pwa.html' ||
     url.pathname==='/index.html' ||
-    url.pathname==='/app-source';
+    url.pathname==='/app-source' ||
+    url.pathname==='/manifest.webmanifest';
 
   if(alwaysFresh){
     event.respondWith(
