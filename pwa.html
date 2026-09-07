@@ -16,7 +16,7 @@
 <script>
 (async()=>{
   try{
-    const response=await fetch('/app-source?v=annual-year-icons1',{cache:'no-store'});
+    const response=await fetch('/app-source?v=forgot-password1',{cache:'no-store'});
     if(!response.ok) throw new Error('Kunne ikke laste Fleder');
     let html=await response.text();
 
@@ -69,6 +69,24 @@
     html=html.replace(
       "month:$('afMonth').value,status:'Planlagt',year:state.settings.year",
       "month:$('afMonth').value,status:'Planlagt',year:Number($('afYear').value)||state.settings.year"
+    );
+
+    // Glemt passord på innloggingssiden.
+    html=html.replace(
+      '<button class="btn" id="authSubmit">Logg inn</button><div id="authMsg" class="authMsg"></div>',
+      '<button class="btn" id="authSubmit">Logg inn</button><button type="button" class="btn secondary" id="forgotPasswordBtn" style="margin-left:8px">Glemt passord?</button><div id="authMsg" class="authMsg"></div>'
+    );
+    html=html.replace(
+      "$('authPassword').autocomplete=mode==='login'?'current-password':'new-password';$('authMsg').innerHTML=''",
+      "$('authPassword').autocomplete=mode==='login'?'current-password':'new-password';const fp=$('forgotPasswordBtn');if(fp)fp.classList.toggle('hidden',mode!=='login');$('authMsg').innerHTML=''"
+    );
+    html=html.replace(
+      "$('authTabLogin').onclick=()=>setAuthMode('login');$('authTabLeader').onclick=()=>setAuthMode('leader');$('authTabTeacher').onclick=()=>setAuthMode('teacher');",
+      "$('authTabLogin').onclick=()=>setAuthMode('login');$('authTabLeader').onclick=()=>setAuthMode('leader');$('authTabTeacher').onclick=()=>setAuthMode('teacher');const forgotBtn=$('forgotPasswordBtn');if(forgotBtn)forgotBtn.onclick=async()=>{const email=$('authEmail').value.trim();if(!email){$('authMsg').innerHTML='<div class=\"notice warn\">Skriv inn e-postadressen din først.</div>';$('authEmail').focus();return}try{forgotBtn.disabled=true;$('authMsg').innerHTML='<div class=\"notice\">Sender lenke for nytt passord…</div>';const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin});if(r.error)throw r.error;$('authMsg').innerHTML='<div class=\"notice ok\">✓ Vi har sendt en lenke til '+esc(email)+'. Åpne lenken i e-posten for å lage nytt passord.</div>'}catch(err){console.error(err);$('authMsg').innerHTML='<div class=\"notice warn\">'+esc(err.message||'Kunne ikke sende e-post for nytt passord.')+'</div>'}finally{forgotBtn.disabled=false}};"
+    );
+    html=html.replace(
+      "sb.auth.onAuthStateChange((event,newSession)=>{if((event==='SIGNED_IN'||event==='TOKEN_REFRESHED')&&newSession&&!session){session=newSession;setTimeout(()=>startAuthenticated(),0)}});",
+      "sb.auth.onAuthStateChange((event,newSession)=>{if(event==='PASSWORD_RECOVERY'&&newSession){session=newSession;setTimeout(()=>{showModal('Lag nytt passord',`<form id=\"resetPasswordForm\"><div class=\"field\"><label>Nytt passord</label><input id=\"newPassword\" type=\"password\" minlength=\"8\" required autocomplete=\"new-password\"></div><div class=\"field\" style=\"margin-top:12px\"><label>Gjenta nytt passord</label><input id=\"newPassword2\" type=\"password\" minlength=\"8\" required autocomplete=\"new-password\"></div><div id=\"resetPasswordMsg\" class=\"authMsg\"></div><div style=\"display:flex;justify-content:flex-end;margin-top:16px\"><button class=\"btn\">Lagre nytt passord</button></div></form>`);$('resetPasswordForm').onsubmit=async e=>{e.preventDefault();const p1=$('newPassword').value,p2=$('newPassword2').value;if(p1!==p2){$('resetPasswordMsg').innerHTML='<div class=\"notice warn\">Passordene er ikke like.</div>';return}try{const r=await sb.auth.updateUser({password:p1});if(r.error)throw r.error;$('resetPasswordMsg').innerHTML='<div class=\"notice ok\">✓ Passordet er endret. Du kan nå bruke det nye passordet.</div>';setTimeout(()=>location.href=location.origin,1200)}catch(err){$('resetPasswordMsg').innerHTML='<div class=\"notice warn\">'+esc(err.message||'Kunne ikke endre passordet.')+'</div>'}}},0);return}if((event==='SIGNED_IN'||event==='TOKEN_REFRESHED')&&newSession&&!session){session=newSession;setTimeout(()=>startAuthenticated(),0)}});"
     );
 
     html=html.replace('</body>',`<script>
