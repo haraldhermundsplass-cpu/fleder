@@ -2,38 +2,14 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/",
-      "destination": "/pwa.html"
-    },
-    {
-      "source": "/index.html",
-      "destination": "/pwa.html"
-    },
-    {
-      "source": "/app-source",
-      "destination": "/index.html"
-    }
+    {"source": "/", "destination": "/pwa2.html"},
+    {"source": "/index.html", "destination": "/pwa2.html"},
+    {"source": "/app-source", "destination": "/index.html"}
   ],
   "headers": [
-    {
-      "source": "/manifest.webmanifest",
-      "headers": [
-        {"key": "Content-Type", "value": "application/manifest+json; charset=utf-8"}
-      ]
-    },
-    {
-      "source": "/sw.js",
-      "headers": [
-        {"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"},
-        {"key": "Service-Worker-Allowed", "value": "/"}
-      ]
-    },
-    {
-      "source": "/pwa.html",
-      "headers": [
-        {"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"}
-      ]
-    }
+    {"source": "/manifest.webmanifest", "headers": [{"key": "Content-Type", "value": "application/manifest+json; charset=utf-8"}]},
+    {"source": "/sw.js", "headers": [{"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"},{"key": "Service-Worker-Allowed", "value": "/"}]},
+    {"source": "/pwa2.html", "headers": [{"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"}]},
+    {"source": "/fleder-password-reset.js", "headers": [{"key": "Cache-Control", "value": "no-cache, no-store, must-revalidate"}]}
   ]
 }
