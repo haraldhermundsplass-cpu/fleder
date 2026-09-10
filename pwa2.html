@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="no"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Fleder</title><meta name="theme-color" content="#e9edf2"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="/fleder-icon-180.png"></head><body>
+<script>
+(async()=>{
+ try{
+  const r=await fetch('/app-source?v=login-fix2',{cache:'no-store'}); if(!r.ok) throw new Error(); let html=await r.text();
+  const head='<meta name="theme-color" content="#e9edf2"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Fleder"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="/fleder-icon-180.png">';
+  html=html.replace('<head>','<head>'+head).replace('<title>Faglig leder – trafikkskole</title>','<title>Fleder</title>');
+  html=html.replace(/,'MC grunnkurs'/g,'').replace(/,'Sikkerhetskurs bane'/g,'').replace(/,'Sikkerhetskurs vei'/g,'');
+  html=html.replace('<th>Type</th><th>Planlagt</th><th>Status</th>','<th>Type</th><th>Planlagt måned</th><th>År</th><th>Status</th>');
+  html=html.replace('<td>${esc(a.month)}</td><td><span class="tag ${a.status===\'Gjennomført\'?\'ok\':\'warn\'}">','<td>${esc(a.month)}</td><td>${esc(a.year||state.settings.year||\'\')}</td><td><span class="tag ${a.status===\'Gjennomført\'?\'ok\':\'warn\'}">');
+  html=html.replace('<tr><td colspan="6" class="muted">Ingen aktiviteter planlagt.</td></tr>','<tr><td colspan="7" class="muted">Ingen aktiviteter planlagt.</td></tr>');
+  html=html.replace('</select></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');','</select></div><div class="field"><label>År</label><input id="afYear" type="number" min="2020" max="2100" value="${state.settings.year||new Date().getFullYear()}" required></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');');
+  html=html.replace("month:$('afMonth').value,status:'Planlagt',year:state.settings.year","month:$('afMonth').value,status:'Planlagt',year:Number($('afYear').value)||state.settings.year");
+  html=html.replace('</body>','<script src="/fleder-password-reset.js?v=2"><\\/script><script>if(\'serviceWorker\' in navigator){navigator.serviceWorker.register(\'/sw.js?v=5\').catch(()=>{})}<\\/script></body>');
+  document.open();document.write(html);document.close();
+ }catch(e){document.body.innerHTML='<main style="font-family:system-ui;padding:32px"><h1>Fleder</h1><p>Appen kunne ikke lastes. Prøv igjen.</p></main>'}
+})();
+</script></body></html>
