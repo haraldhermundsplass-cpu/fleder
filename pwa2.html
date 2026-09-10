@@ -3,7 +3,7 @@
 <script>
 (async()=>{
  try{
-  const r=await fetch('/app-source?v=login-fix3',{cache:'no-store'}); if(!r.ok) throw new Error(); let html=await r.text();
+  const r=await fetch('/app-source?v=login-fix4',{cache:'no-store'}); if(!r.ok) throw new Error(); let html=await r.text();
   const head='<meta name="theme-color" content="#e9edf2"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Fleder"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="/fleder-icon-180.png">';
   html=html.replace('<head>','<head>'+head).replace('<title>Faglig leder – trafikkskole</title>','<title>Fleder</title>');
   html=html.replace(/,'MC grunnkurs'/g,'').replace(/,'Sikkerhetskurs bane'/g,'').replace(/,'Sikkerhetskurs vei'/g,'');
@@ -13,11 +13,10 @@
   html=html.replace('</select></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');','</select></div><div class="field"><label>År</label><input id="afYear" type="number" min="2020" max="2100" value="${state.settings.year||new Date().getFullYear()}" required></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');');
   html=html.replace("month:$('afMonth').value,status:'Planlagt',year:state.settings.year","month:$('afMonth').value,status:'Planlagt',year:Number($('afYear').value)||state.settings.year");
 
-  // Legg knappen direkte inn i innloggings-HTML før dokumentet skrives.
-  html=html.replace('<button class="btn" id="authSubmit">Logg inn</button><div id="authMsg" class="authMsg"></div>','<button class="btn" id="authSubmit">Logg inn</button><button type="button" class="btn secondary" id="forgotPasswordBtn" style="margin-left:8px">Glemt passord?</button><div id="authMsg" class="authMsg"></div>');
+  // Finn innloggingsknappen uavhengig av eksakt attributtrekkefølge og legg lenken rett etter.
+  html=html.replace(/(<button[^>]*id=["']authSubmit["'][^>]*>\s*Logg inn\s*<\/button>)/i,'$1<button type="button" id="forgotPasswordBtn" style="display:block;border:0;background:transparent;color:#1769c2;font-weight:700;padding:10px 0 0;text-decoration:underline;cursor:pointer">Glemt passord?</button>');
 
-  // Kjør passordfunksjonen etter at hovedappen er lastet og sb finnes.
-  html=html.replace('</body>','<script src="/fleder-password-reset.js?v=3"><\/script><script>if(\'serviceWorker\' in navigator){navigator.serviceWorker.register(\'/sw.js?v=5\').catch(()=>{})}<\/script></body>');
+  html=html.replace('</body>','<script src="/fleder-password-reset.js?v=4"><\/script><script>if(\'serviceWorker\' in navigator){navigator.serviceWorker.register(\'/sw.js?v=5\').catch(()=>{})}<\/script></body>');
   document.open();document.write(html);document.close();
  }catch(e){document.body.innerHTML='<main style="font-family:system-ui;padding:32px"><h1>Fleder</h1><p>Appen kunne ikke lastes. Prøv igjen.</p></main>'}
 })();
