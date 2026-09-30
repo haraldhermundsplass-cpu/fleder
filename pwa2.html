@@ -3,7 +3,7 @@
 <script>
 (async()=>{
  try{
-  const r=await fetch('/app-source?v=login-fix4',{cache:'no-store'}); if(!r.ok) throw new Error(); let html=await r.text();
+  const r=await fetch('/app-source?v=login-fix5',{cache:'no-store'}); if(!r.ok) throw new Error(); let html=await r.text();
   const head='<meta name="theme-color" content="#e9edf2"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Fleder"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="/fleder-icon-180.png">';
   html=html.replace('<head>','<head>'+head).replace('<title>Faglig leder – trafikkskole</title>','<title>Fleder</title>');
   html=html.replace(/,'MC grunnkurs'/g,'').replace(/,'Sikkerhetskurs bane'/g,'').replace(/,'Sikkerhetskurs vei'/g,'');
@@ -12,9 +12,6 @@
   html=html.replace('<tr><td colspan="6" class="muted">Ingen aktiviteter planlagt.</td></tr>','<tr><td colspan="7" class="muted">Ingen aktiviteter planlagt.</td></tr>');
   html=html.replace('</select></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');','</select></div><div class="field"><label>År</label><input id="afYear" type="number" min="2020" max="2100" value="${state.settings.year||new Date().getFullYear()}" required></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');');
   html=html.replace("month:$('afMonth').value,status:'Planlagt',year:state.settings.year","month:$('afMonth').value,status:'Planlagt',year:Number($('afYear').value)||state.settings.year");
-
-  // Finn innloggingsknappen uavhengig av eksakt attributtrekkefølge og legg lenken rett etter.
-  html=html.replace(/(<button[^>]*id=["']authSubmit["'][^>]*>\s*Logg inn\s*<\/button>)/i,'$1<button type="button" id="forgotPasswordBtn" style="display:block;border:0;background:transparent;color:#1769c2;font-weight:700;padding:10px 0 0;text-decoration:underline;cursor:pointer">Glemt passord?</button>');
 
   html=html.replace('</body>','<script src="/fleder-password-reset.js?v=4"><\/script><script>if(\'serviceWorker\' in navigator){navigator.serviceWorker.register(\'/sw.js?v=5\').catch(()=>{})}<\/script></body>');
   document.open();document.write(html);document.close();
