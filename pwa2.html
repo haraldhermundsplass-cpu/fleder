@@ -13,7 +13,7 @@
   html=html.replace('</select></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');','</select></div><div class="field"><label>År</label><input id="afYear" type="number" min="2020" max="2100" value="${state.settings.year||new Date().getFullYear()}" required></div></div><div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="btn">Lagre</button></div></form>`);const ft=$(\'afTeacher\'),fc=$(\'afClass\');');
   html=html.replace("month:$('afMonth').value,status:'Planlagt',year:state.settings.year","month:$('afMonth').value,status:'Planlagt',year:Number($('afYear').value)||state.settings.year");
 
-  html=html.replace('</body>','<script src="/fleder-password-reset.js?v=4"><\/script><script>if(\'serviceWorker\' in navigator){navigator.serviceWorker.register(\'/sw.js?v=5\').catch(()=>{})}<\/script></body>');
+  html=html.replace('</body>','<script>if(\'serviceWorker\' in navigator){navigator.serviceWorker.register(\'/sw.js?v=5\').catch(()=>{})}<\/script></body>');
   document.open();document.write(html);document.close();
  }catch(e){document.body.innerHTML='<main style="font-family:system-ui;padding:32px"><h1>Fleder</h1><p>Appen kunne ikke lastes. Prøv igjen.</p></main>'}
 })();
