@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-<div id="authGate" class="authGate hidden"><div class="authCard"><h1>🚘 Faglig leder</h1><p class="muted">Felles kvalitetssystem for trafikkskolen.</p><div class="authTabs"><button type="button" id="authTabLogin" class="active">Logg inn</button><button type="button" id="authTabLeader">Ny faglig leder</button><button type="button" id="authTabTeacher">Ny lærer</button></div><form id="authForm"><div id="authNameField" class="field hidden"><label>Navn</label><input id="authName"></div><div id="authSchoolField" class="field hidden"><label>Trafikkskole</label><input id="authSchool"></div><div id="authInviteField" class="field hidden"><label>Invitasjonskode fra faglig leder</label><input id="authInvite" style="text-transform:uppercase"></div><div class="field"><label>E-post</label><input id="authEmail" type="email" required autocomplete="email"></div><div class="field"><label>Passord</label><input id="authPassword" type="password" minlength="8" required autocomplete="current-password"></div><button class="btn" id="authSubmit">Logg inn</button><button type="button" id="forgotPasswordBtn" style="display:block;border:0;background:transparent;color:#1769c2;font-weight:700;padding:10px 0 0;text-decoration:underline;cursor:pointer">Glemt passord?</button><div id="authMsg" class="authMsg"></div></form></div></div>
+<div id="authGate" class="authGate hidden"><div class="authCard"><h1>🚘 Faglig leder</h1><p class="muted">Felles kvalitetssystem for trafikkskolen.</p><div class="authTabs"><button type="button" id="authTabLogin" class="active">Logg inn</button><button type="button" id="authTabLeader">Ny faglig leder</button><button type="button" id="authTabTeacher">Ny lærer</button></div><form id="authForm"><div id="authNameField" class="field hidden"><label>Navn</label><input id="authName"></div><div id="authSchoolField" class="field hidden"><label>Trafikkskole</label><input id="authSchool"></div><div id="authInviteField" class="field hidden"><label>Invitasjonskode fra faglig leder</label><input id="authInvite" style="text-transform:uppercase"></div><div class="field"><label>E-post</label><input id="authEmail" type="email" required autocomplete="email"></div><div class="field"><label>Passord</label><input id="authPassword" type="password" minlength="8" required autocomplete="current-password"></div><button class="btn" id="authSubmit">Logg inn</button><button type="button" onclick="window.flederRecoverPassword(event)" id="forgotPasswordBtn" style="display:block;border:0;background:transparent;color:#1769c2;font-weight:700;padding:10px 0 0;text-decoration:underline;cursor:pointer">Glemt passord?</button><div id="authMsg" class="authMsg"></div></form></div></div>
 <div class="app hidden" id="app">
   <aside class="side">
     <div class="brand" style="padding:8px 10px 14px;">
@@ -152,6 +152,24 @@
   </main>
 </div>
 <div id="modalBack" class="modalback hidden"><div class="modal"><div class="modalhead"><h3 id="modalTitle"></h3><button class="x" id="closeModal">✕</button></div><div id="modalBody"></div></div></div>
+<script>
+window.flederRecoverPassword=async function(event){
+  const button=event.currentTarget;
+  const email=document.getElementById('authEmail');
+  const msg=document.getElementById('authMsg');
+  if(!email.value.trim()){msg.textContent='Skriv inn e-postadressen din først.';email.focus();return;}
+  button.disabled=true;msg.textContent='Sender tilbakestillingslenke…';
+  try{
+    const response=await fetch('https://qrbmuvuymtpauhtpvcay.supabase.co/auth/v1/recover?redirect_to='+encodeURIComponent(location.origin),{
+      method:'POST',headers:{'Content-Type':'application/json','apikey':'sb_publishable_seFG7w6EzTnLLmsc5xzzIw_krnm-VOW'},
+      body:JSON.stringify({email:email.value.trim()})
+    });
+    if(!response.ok){const error=await response.json().catch(()=>({}));throw new Error(error.msg||error.message||'Kunne ikke sende lenken.');}
+    msg.textContent='Hvis e-postadressen er registrert, får du en lenke for å tilbakestille passordet.';
+  }catch(error){msg.textContent=error.message||'Kunne ikke sende lenken. Prøv igjen.';}
+  finally{button.disabled=false;}
+};
+</script>
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.4/+esm';
 (()=>{
