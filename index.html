@@ -13,6 +13,133 @@
 .authGate{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#eef5fb,#f8fbfe)}
 .authCard{width:min(520px,100%);background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:24px}
 .authCard h1{margin:0 0 6px}.authTabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.authTabs button{border:0;background:#eef5ff;color:#155ea8;padding:9px 12px;border-radius:9px;font-weight:700}.authTabs button.active{background:var(--blue);color:#fff}.authMsg{margin-top:12px}.userBadge{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#174f83;background:#eef6ff;border:1px solid #cfe3f7;padding:6px 9px;border-radius:999px}.cloudBadge{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#2c624a;background:#eaf7ef;border:1px solid #cce9d8;padding:6px 9px;border-radius:999px}.teacherMode [data-leader]{display:none!important}
+
+/* Public landing page */
+.authGate{display:block;min-height:100vh;padding:0;background:#f7f9fc;color:#142b42}
+.authGate.hidden{display:none!important}
+.lpTop{background:#fff;border-bottom:1px solid #e5edf4;position:relative;z-index:2}
+.lpWrap{max-width:1180px;margin:auto;padding:0 28px}
+.lpNav{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.lpLogo{width:155px;height:auto;display:block}
+.lpNavLinks{display:flex;align-items:center;gap:24px}
+.lpNavLinks a{color:#24435c;text-decoration:none;font-size:14px;font-weight:700}
+.lpBtn{display:inline-flex;justify-content:center;align-items:center;gap:9px;text-decoration:none;border:0;border-radius:12px;padding:14px 22px;font-weight:800;font-size:15px;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.lpBtn:hover{transform:translateY(-2px)}
+.lpPrimary{background:#1466de;color:#fff!important;box-shadow:0 9px 20px rgba(20,102,222,.19)}
+.lpSecondary{background:#fff;color:#173e65!important;border:1px solid #d7e3ef}
+.lpHero{background:radial-gradient(circle at 85% 15%,#dcefff 0%,transparent 42%),linear-gradient(155deg,#f5faff 0%,#edf5ff 55%,#f8fbff 100%);padding:82px 0 100px}
+.lpHeroGrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(340px,.8fr);align-items:center;gap:68px}
+.lpEyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #cbdff5;background:#fff;border-radius:999px;padding:9px 14px;color:#1d5eaa;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.lpHero h1{font-size:clamp(40px,5vw,66px);line-height:1.08;letter-spacing:-.05em;margin:25px 0 20px;color:#0a2c4f;max-width:720px}
+.lpHero h1 span{color:#1677ef}
+.lpLead{font-size:19px;line-height:1.75;color:#51697e;max-width:610px;margin:0 0 30px}
+.lpHeroActions{display:flex;gap:12px;flex-wrap:wrap}
+.lpChecks{display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;color:#46627b;font-size:13px;font-weight:700}
+.lpChecks span:before{content:'✓';color:#0d9b77;margin-right:7px}
+.lpVisual{background:#0d3155;padding:18px;border-radius:24px;box-shadow:0 30px 65px rgba(13,49,85,.2);transform:rotate(1deg)}
+.lpVisualHead{display:flex;justify-content:space-between;color:#d9e9fa;font-size:13px;font-weight:700;padding:8px 8px 20px}
+.lpPill{background:#1a5277;border-radius:999px;padding:5px 10px;color:#a7f2db;font-size:11px}
+.lpVisualBody{background:#fff;border-radius:15px;padding:22px}
+.lpMiniLabel{font-size:12px;color:#667f94;font-weight:700}
+.lpVisualBody h3{font-size:21px;color:#173954;margin:7px 0 20px}
+.lpMiniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.lpMiniMetric{background:#f2f7fc;border:1px solid #e7eff7;border-radius:11px;padding:13px 9px}
+.lpMiniMetric strong{display:block;font-size:24px;color:#0b477f;margin-bottom:5px}
+.lpMiniMetric small{color:#62778b;font-size:11px}
+.lpTimeline{margin-top:20px;border-top:1px solid #e8edf2;padding-top:16px;display:grid;gap:12px}
+.lpTimeline div{display:flex;align-items:center;gap:10px;color:#3b546c;font-size:12px}
+.lpDot{width:9px;height:9px;border-radius:50%;background:#1677ef;flex-shrink:0}
+.lpDot.green{background:#0eaf84}.lpDot.gold{background:#e3a127}
+.lpSection{padding:90px 0}.lpCenter{text-align:center;max-width:760px;margin:0 auto 45px}
+.lpKicker{font-size:12px;font-weight:900;color:#176fe1;letter-spacing:.12em;text-transform:uppercase}
+.lpSection h2{font-size:clamp(30px,3.5vw,43px);line-height:1.18;letter-spacing:-.035em;color:#0b2d4f;margin:14px 0}
+.lpSection p{font-size:16px;color:#64798d;line-height:1.7}
+.lpFeatures{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.lpFeature{background:#fff;border:1px solid #e2eaf2;border-radius:18px;padding:28px;box-shadow:0 9px 24px rgba(15,46,77,.035)}
+.lpFeatureIcon{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:#eaf3ff;color:#1667d5;font-size:23px;margin-bottom:20px}
+.lpFeature h3{font-size:18px;color:#123858;margin:0 0 10px}
+.lpFeature p{font-size:14px;margin:0}
+.lpHow{background:#eaf3fc}
+.lpSteps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lpStep{padding:28px;background:#fff;border-radius:17px;border:1px solid #dbe9f6}
+.lpStep b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#176cdb;color:#fff;margin-bottom:15px}
+.lpStep h3{color:#173a59;margin:0 0 8px}.lpStep p{font-size:14px;margin:0}
+.lpAccess{background:#0b2e50;padding:85px 0}
+.lpAccessGrid{display:grid;grid-template-columns:1fr minmax(340px,480px);gap:80px;align-items:center}
+.lpAccess h2{color:#fff;font-size:clamp(32px,4vw,48px);letter-spacing:-.04em;line-height:1.14;margin:12px 0 20px}
+.lpAccess p{color:#c4d6e8;line-height:1.75;font-size:17px}
+.lpAccessList{display:grid;gap:17px;margin-top:25px;color:#e6f1fb;font-weight:650}
+.lpAccessList span:before{content:'✓';color:#67e3b4;margin-right:12px}
+.authGate .authCard{width:100%;max-width:none;border:0;box-shadow:0 22px 50px rgba(0,15,40,.22);padding:30px;border-radius:20px}
+.authGate .authCard h3{font-size:23px;color:#103757;margin:0 0 7px}
+.authGate .authCard .authTabs{margin:20px 0;gap:7px}
+.authGate .authCard .authTabs button{font-size:12px;padding:9px 11px}
+.lpFooter{background:#08253f;color:#9eb7cd;padding:28px 0;font-size:13px}
+.lpFooter .lpWrap{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.lpFooter a{color:#c8e1f6;text-decoration:none}
+@media(max-width:900px){.lpHeroGrid,.lpAccessGrid{grid-template-columns:1fr;gap:35px}.lpVisual{max-width:560px;transform:none}.lpFeatures{grid-template-columns:repeat(2,1fr)}.lpHero{padding:58px 0 75px}}
+@media(max-width:600px){.lpWrap{padding:0 18px}.lpNav{min-height:70px}.lpLogo{width:125px}.lpNavLinks a:not(.lpBtn){display:none}.lpNavLinks .lpBtn{padding:10px 14px;font-size:13px}.lpHero h1{font-size:40px}.lpLead{font-size:16px}.lpFeatures,.lpSteps{grid-template-columns:1fr}.lpSection{padding:62px 0}.lpAccess{padding:62px 0}.lpMiniMetric strong{font-size:20px}}
+</style>
+</head>
+<body>
+<div id="authGate" class="authGate hidden">
+<header class="lpTop"><div class="lpWrap lpNav"><a href="#top" aria-label="Fleder – til toppen"><img class="lpLogo" src="/fleder-logo.png" alt="Fleder"></a><nav class="lpNavLinks" aria-label="Hovedmeny"><a href="#funksjoner">Funksjoner</a><a href="#slik-fungerer-det">Slik fungerer det</a><a class="lpBtn lpPrimary" href="#kom-i-gang" onclick="window.flederLandingMode&&window.flederLandingMode('login')">Logg inn</a></nav></div></header>
+<main id="top">
+<section class="lpHero"><div class="lpWrap lpHeroGrid"><div><span class="lpEyebrow">Digitalt kvalitetssystem for trafikkskoler</span><h1>Mer oversikt.<br><span>Bedre faglig ledelse.</span></h1><p class="lpLead">Samle lærerveiledning, årsplaner, undervisningsplaner og dokumentasjon på ett sted. Fleder gir faglig leder bedre kontroll – og lærerne en enklere arbeidshverdag.</p><div class="lpHeroActions"><a class="lpBtn lpPrimary" href="#kom-i-gang" onclick="window.flederLandingMode&&window.flederLandingMode('leader')">Kom i gang med Fleder →</a><a class="lpBtn lpSecondary" href="#funksjoner">Se funksjonene</a></div><div class="lpChecks"><span>Utviklet for trafikkskoler</span><span>Felles oversikt</span><span>Tilgang for lærere</span></div></div><div class="lpVisual" aria-label="Illustrasjon av oversikt i Fleder"><div class="lpVisualHead"><span>FLEDER / Faglig oversikt</span><span class="lpPill">● Kvalitet i fokus</span></div><div class="lpVisualBody"><span class="lpMiniLabel">Din trafikkskole</span><h3>Alt samlet. Ett sted.</h3><div class="lpMiniGrid"><div class="lpMiniMetric"><strong>01</strong><small>Årsplan</small></div><div class="lpMiniMetric"><strong>02</strong><small>Lærerveiledning</small></div><div class="lpMiniMetric"><strong>03</strong><small>Dokumentasjon</small></div></div><div class="lpTimeline"><div><i class="lpDot green"></i> Planlegg faglig oppfølging</div><div><i class="lpDot"></i> Gjennomfør og dokumenter veiledning</div><div><i class="lpDot gold"></i> Følg opp tiltak og utvikling</div></div></div></div></div></section>
+<section id="funksjoner" class="lpSection"><div class="lpWrap"><div class="lpCenter"><span class="lpKicker">Funksjonene</span><h2>Verktøyene du trenger som faglig leder</h2><p>Mindre tid på å lete etter dokumentasjon. Mer tid til å utvikle undervisningen og følge opp lærerne.</p></div><div class="lpFeatures"><article class="lpFeature"><div class="lpFeatureIcon">▦</div><h3>Årsplan og oppfølging</h3><p>Se planlagte aktiviteter, status og hvilke lærere eller klasser som trenger oppfølging.</p></article><article class="lpFeature"><div class="lpFeatureIcon">✎</div><h3>Lærerveiledning</h3><p>Registrer observasjoner, faglige vurderinger og oppfølging på en strukturert måte.</p></article><article class="lpFeature"><div class="lpFeatureIcon">▤</div><h3>Undervisningsplaner</h3><p>Samle skolens planer og gjør dem tilgjengelige for de som trenger dem.</p></article><article class="lpFeature"><div class="lpFeatureIcon">♙</div><h3>Læreroversikt</h3><p>Hold oversikt over lærere, undervisningsklasser og relevante godkjenninger.</p></article><article class="lpFeature"><div class="lpFeatureIcon">↻</div><h3>TABS iCal-import</h3><p>Importer påsitt fra tilkoblede lærerkalendere. Tilgjengelig periode styres av TABS sin iCal-eksport.</p></article><article class="lpFeature"><div class="lpFeatureIcon">✓</div><h3>Dokumentasjon og kontroll</h3><p>Få en tydelig oversikt over gjennomført arbeid, registreringer og forbedringspunkter.</p></article></div></div></section>
+<section id="slik-fungerer-det" class="lpSection lpHow"><div class="lpWrap"><div class="lpCenter"><span class="lpKicker">Enklere hverdag</span><h2>Fra plan til dokumentert oppfølging</h2><p>Fleder er bygget rundt arbeidsflyten til en trafikkskole.</p></div><div class="lpSteps"><div class="lpStep"><b>1</b><h3>Opprett skolen</h3><p>Faglig leder oppretter konto og legger inn skolens lærere og klasser.</p></div><div class="lpStep"><b>2</b><h3>Få oversikt</h3><p>Bruk årsplanen og samle planverk, aktiviteter og lærerveiledning.</p></div><div class="lpStep"><b>3</b><h3>Følg utviklingen</h3><p>Dokumenter observasjoner og se hva som er planlagt og gjennomført.</p></div></div></div></section>
+<section id="kom-i-gang" class="lpAccess"><div class="lpWrap lpAccessGrid"><div><span class="lpKicker" style="color:#8fc4ff">Kom i gang</span><h2>Ta kontroll over den faglige oppfølgingen.</h2><p>Logg inn på din eksisterende konto, opprett trafikkskolen som faglig leder eller bli med som lærer med invitasjonskode.</p><div class="lpAccessList"><span>Samlet faglig oversikt</span><span>Tilpasset faglig leder og trafikklærer</span><span>Ingen dobbeltbooking – TABS er fortsatt bookingsystemet</span></div></div><div class="authCard" id="lpLoginCard"><h3>Velkommen til Fleder</h3><p class="muted">Velg hvordan du vil fortsette.</p><div class="authTabs"><button type="button" id="authTabLogin" class="active">Logg inn</button><button type="button" id="authTabLeader">Ny faglig leder</button><button type="button" id="authTabTeacher">Ny lærer</button></div><form id="authForm"><div id="authNameField" class="field hidden"><label>Navn</label><input id="authName"></div><div id="authSchoolField" class="field hidden"><label>Trafikkskole</label><input id="authSchool"></div><div id="authInviteField" class="field hidden"><label>Invitasjonskode fra faglig leder</label><input id="authInvite" style="text-transform:uppercase"></div><div class="field"><label>E-post</label><input id="authEmail" type="email" required autocomplete="email"></div><div class="field"><label>Passord</label><input id="authPassword" type="password" minlength="8" required autocomplete="current-password"></div><button class="btn" id="authSubmit">Logg inn</button><button type="button" onclick="window.flederRecoverPassword(event)" id="forgotPasswordBtn" style="display:block;border:0;background:transparent;color:#1769c2;font-weight:700;padding:10px 0 0;text-decoration:underline;cursor:pointer">Glemt passord?</button><div id="authMsg" class="authMsg"></div></form></div></div></section>
+</main><footer class="lpFooter"><div class="lpWrap"><span>© Fleder · Digital faglig ledelse for trafikkskoler</span><a href="#top">Til toppen ↑</a></div></footer></div>
+:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.lpHero h1{font-size:clamp(40px,5vw,66px);line-height:1.08;letter-spacing:-.05em;margin:25px 0 20px;color:#0a2c4f;max-width:720px}
+.lpHero h1 span{color:#1677ef}
+.lpLead{font-size:19px;line-height:1.75;color:#51697e;max-width:610px;margin:0 0 30px}
+.lpHeroActions{display:flex;gap:12px;flex-wrap:wrap}
+.lpChecks{display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;color:#46627b;font-size:13px;font-weight:700}
+.lpChecks span:before{content:'✓';color:#0d9b77;margin-right:7px}
+.lpVisual{background:#0d3155;padding:18px;border-radius:24px;box-shadow:0 30px 65px rgba(13,49,85,.2);transform:rotate(1deg)}
+.lpVisualHead{display:flex;justify-content:space-between;color:#d9e9fa;font-size:13px;font-weight:700;padding:8px 8px 20px}
+.lpPill{background:#1a5277;border-radius:999px;padding:5px 10px;color:#a7f2db;font-size:11px}
+.lpVisualBody{background:#fff;border-radius:15px;padding:22px}
+.lpMiniLabel{font-size:12px;color:#667f94;font-weight:700}
+.lpVisualBody h3{font-size:21px;color:#173954;margin:7px 0 20px}
+.lpMiniGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.lpMiniMetric{background:#f2f7fc;border:1px solid #e7eff7;border-radius:11px;padding:13px 9px}
+.lpMiniMetric strong{display:block;font-size:24px;color:#0b477f;margin-bottom:5px}
+.lpMiniMetric small{color:#62778b;font-size:11px}
+.lpTimeline{margin-top:20px;border-top:1px solid #e8edf2;padding-top:16px;display:grid;gap:12px}
+.lpTimeline div{display:flex;align-items:center;gap:10px;color:#3b546c;font-size:12px}
+.lpDot{width:9px;height:9px;border-radius:50%;background:#1677ef;flex-shrink:0}
+.lpDot.green{background:#0eaf84}.lpDot.gold{background:#e3a127}
+.lpSection{padding:90px 0}.lpCenter{text-align:center;max-width:760px;margin:0 auto 45px}
+.lpKicker{font-size:12px;font-weight:900;color:#176fe1;letter-spacing:.12em;text-transform:uppercase}
+.lpSection h2{font-size:clamp(30px,3.5vw,43px);line-height:1.18;letter-spacing:-.035em;color:#0b2d4f;margin:14px 0}
+.lpSection p{font-size:16px;color:#64798d;line-height:1.7}
+.lpFeatures{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.lpFeature{background:#fff;border:1px solid #e2eaf2;border-radius:18px;padding:28px;box-shadow:0 9px 24px rgba(15,46,77,.035)}
+.lpFeatureIcon{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:#eaf3ff;color:#1667d5;font-size:23px;margin-bottom:20px}
+.lpFeature h3{font-size:18px;color:#123858;margin:0 0 10px}
+.lpFeature p{font-size:14px;margin:0}
+.lpHow{background:#eaf3fc}
+.lpSteps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.lpStep{padding:28px;background:#fff;border-radius:17px;border:1px solid #dbe9f6}
+.lpStep b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#176cdb;color:#fff;margin-bottom:15px}
+.lpStep h3{color:#173a59;margin:0 0 8px}.lpStep p{font-size:14px;margin:0}
+.lpAccess{background:#0b2e50;padding:85px 0}
+.lpAccessGrid{display:grid;grid-template-columns:1fr minmax(340px,480px);gap:80px;align-items:center}
+.lpAccess h2{color:#fff;font-size:clamp(32px,4vw,48px);letter-spacing:-.04em;line-height:1.14;margin:12px 0 20px}
+.lpAccess p{color:#c4d6e8;line-height:1.75;font-size:17px}
+.lpAccessList{display:grid;gap:17px;margin-top:25px;color:#e6f1fb;font-weight:650}
+.lpAccessList span:before{content:'✓';color:#67e3b4;margin-right:12px}
+.authGate .authCard{width:100%;max-width:none;border:0;box-shadow:0 22px 50px rgba(0,15,40,.22);padding:30px;border-radius:20px}
+.authGate .authCard h3{font-size:23px;color:#103757;margin:0 0 7px}
+.authGate .authCard .authTabs{margin:20px 0;gap:7px}
+.authGate .authCard .authTabs button{font-size:12px;padding:9px 11px}
+.lpFooter{background:#08253f;color:#9eb7cd;padding:28px 0;font-size:13px}
+.lpFooter .lpWrap{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.lpFooter a{color:#c8e1f6;text-decoration:none}
+@media(max-width:900px){.lpHeroGrid,.lpAccessGrid{grid-template-columns:1fr;gap:35px}.lpVisual{max-width:560px;transform:none}.lpFeatures{grid-template-columns:repeat(2,1fr)}.lpHero{padding:58px 0 75px}}
+@media(max-width:600px){.lpWrap{padding:0 18px}.lpNav{min-height:70px}.lpLogo{width:125px}.lpNavLinks a:not(.lpBtn){display:none}.lpNavLinks .lpBtn{padding:10px 14px;font-size:13px}.lpHero h1{font-size:40px}.lpLead{font-size:16px}.lpFeatures,.lpSteps{grid-template-columns:1fr}.lpSection{padding:62px 0}.lpAccess{padding:62px 0}.lpMiniMetric strong{font-size:20px}}
 </style>
 </head>
 <body>
@@ -356,7 +483,7 @@ $('importDbBtn').onclick=()=>$('importDbFile').click();$('importDbFile').onchang
 $('resetDb').onclick=async()=>{if(!confirm('Er du sikker? Dette sletter ALLE registrerte skoledata og filer i skyløsningen.'))return;if(!confirm('Siste bekreftelse: slett skolens databaseinnhold?'))return;for(const s of ['settings','teachers','annual','observations','plans','files'])await clearStore(s);state={settings:{schoolName:'',orgNumber:'',leader:'',email:'',phone:'',year:new Date().getFullYear(),classes:['B','BE','TGK']},teachers:[],annual:[],observations:[],plans:[]};await saveSettings();await loadState();renderAll();renderSettings();$('dbStatus').textContent='Skolens data er nullstilt.'}
 function renderAll(){renderDashboard();renderTeachers();fillTeacherSelects();renderAnnual();loadTabsPasitt();renderPlans();renderDocs();renderAudit();renderSettings();if(profile)applyRoleUi()}
 function setAuthMode(mode){authMode=mode;['authTabLogin','authTabLeader','authTabTeacher'].forEach(x=>$(x).classList.remove('active'));$(mode==='login'?'authTabLogin':mode==='leader'?'authTabLeader':'authTabTeacher').classList.add('active');$('authNameField').classList.toggle('hidden',mode==='login');$('authSchoolField').classList.toggle('hidden',mode!=='leader');$('authInviteField').classList.toggle('hidden',mode!=='teacher');$('authSubmit').textContent=mode==='login'?'Logg inn':mode==='leader'?'Opprett faglig leder':'Opprett lærerkonto';$('authPassword').autocomplete=mode==='login'?'current-password':'new-password';$('authMsg').innerHTML=''}
-$('authTabLogin').onclick=()=>setAuthMode('login');$('authTabLeader').onclick=()=>setAuthMode('leader');$('authTabTeacher').onclick=()=>setAuthMode('teacher');
+window.flederLandingMode=(mode)=>setAuthMode(mode);$('authTabLogin').onclick=()=>setAuthMode('login');$('authTabLeader').onclick=()=>setAuthMode('leader');$('authTabTeacher').onclick=()=>setAuthMode('teacher');
 $('forgotPasswordBtn').onclick=async()=>{const email=$('authEmail').value.trim();if(!email){$('authMsg').innerHTML='<div class="notice warn">Skriv inn e-postadressen din først.</div>';$('authEmail').focus();return}try{$('forgotPasswordBtn').disabled=true;const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin});if(r.error)throw r.error;$('authMsg').innerHTML='<div class="notice ok">✓ Vi har sendt en lenke for å tilbakestille passordet.</div>'}catch(err){$('authMsg').innerHTML='<div class="notice warn">'+esc(err.message||'Kunne ikke sende lenken.')+'</div>'}finally{$('forgotPasswordBtn').disabled=false}};
 async function ensureProfile(){const me=await sb.from('profiles').select('*').eq('id',session.user.id).maybeSingle();if(me.error)throw me.error;if(me.data)return me.data;const meta=session.user.user_metadata||{};if(meta.pending_role==='leader'){const r=await sb.rpc('bootstrap_first_leader',{p_school_name:meta.school_name||'Trafikkskole',p_full_name:meta.full_name||session.user.email});if(r.error)throw r.error}else if(meta.pending_role==='teacher'&&meta.invite_code){const r=await sb.rpc('join_with_invite',{p_token:meta.invite_code,p_full_name:meta.full_name||session.user.email});if(r.error)throw r.error}else{throw new Error('Kontoen er bekreftet, men er ikke knyttet til en skole. Be faglig leder lage en ny innloggingskode.')}const again=await sb.from('profiles').select('*').eq('id',session.user.id).single();if(again.error)throw again.error;return again.data}
 function applyRoleUi(){const isTeacher=profile?.role==='teacher';document.body.classList.toggle('teacherMode',isTeacher);document.querySelectorAll('[data-leader]').forEach(el=>el.classList.toggle('hidden',isTeacher));$('userBadge').textContent=`${profile?.full_name||session?.user?.email||''} · ${isTeacher?'Lærer':(profile?.full_name?.trim().toLocaleLowerCase('nb-NO')===state.settings.leader?.trim().toLocaleLowerCase('nb-NO')?'Faglig leder':'Administrator')}`;if(isTeacher){const db=document.querySelector('#nav button[data-page="docs"]');if(db)db.textContent='🗂 Mine veiledninger';document.querySelectorAll('#plans .deletePlan,#uploadPlan').forEach(el=>el.classList.add('hidden'))}}
